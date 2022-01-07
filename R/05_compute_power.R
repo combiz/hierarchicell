@@ -285,6 +285,7 @@ power_hierarchicell <- function(data_summaries,
 
     }
 
+    continuous_power <- rate
 
     fcHurdle <-  summaryDt[summaryDt$contrast=='StatusControl' & summaryDt$component=='H', c(1,4)]
     fcHurdle <- stats::na.omit(as.data.frame(fcHurdle))
@@ -366,6 +367,8 @@ power_hierarchicell <- function(data_summaries,
 
     }
 
+    hurdle_power <- rate
+
     fcHurdle <-  summaryDt[summaryDt$contrast=='StatusControl' & summaryDt$component=='D', c(1,4)]
     fcHurdle <- stats::na.omit(as.data.frame(fcHurdle))
 
@@ -446,7 +449,27 @@ power_hierarchicell <- function(data_summaries,
 
     }
 
+    discrete_power <- rate
+
   }
+
+  df <- data.frame(
+    n_genes = n_genes,
+    n_per_group = n_per_group,
+    n_cases = n_cases,
+    n_controls = n_controls,
+    cells_per_case = cells_per_case,
+    cells_per_control = cells_per_control,
+    ncells_variation_type = ncells_variation_type,
+    foldchange = foldchange,
+    continuous_power = continuous_power,
+    hurdle_power = hurdle_power,
+    discrete_power = discrete_power
+  )
+
+  return(df)
+
+
 
 
 }
@@ -685,6 +708,8 @@ power_hierarchicell_continuous <- function(data_summaries,
 
     }
 
+    continuous_power <- rate
+
 
     fcHurdle <-  summaryDt[summaryDt$contrast=='Outcome' & summaryDt$component=='H', c(1,4)]
     fcHurdle <- stats::na.omit(as.data.frame(fcHurdle))
@@ -766,6 +791,8 @@ power_hierarchicell_continuous <- function(data_summaries,
 
     }
 
+    hurdle_power <- rate
+
     fcHurdle <-  summaryDt[summaryDt$contrast=='Outcome' & summaryDt$component=='D', c(1,4)]
     fcHurdle <- stats::na.omit(as.data.frame(fcHurdle))
 
@@ -846,7 +873,24 @@ power_hierarchicell_continuous <- function(data_summaries,
 
     }
 
+    discrete_power <- rate
+
   }
+
+  df <- data.frame(
+    n_genes = n_genes,
+    n_individuals = n_individuals,
+    cells_per_individual = cells_per_individual,
+    ncells_variation_type = ncells_variation_type,
+    rho = rho,
+    continuous_mean = continuous_mean,
+    continuous_sd = continuous_sd,
+    continuous_power = continuous_power,
+    hurdle_power = hurdle_power,
+    discrete_power = discrete_power
+  )
+
+  return(df)
 
 
 }

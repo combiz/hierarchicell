@@ -17,7 +17,8 @@ Depends: R (>= 3.4.0)
 License: CC0
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 7.1.0
+RoxygenNote: 7.1.2
+biocViews: 
 Imports: 
     fitdistrplus,
     ggplot2,
@@ -32,10 +33,10 @@ Imports:
     MAST,
     SummarizedExperiment,
     BiocGenerics,
-    ROTS,
     VGAM,
     geepack,
     glmmTMB,
+    ROTS,
     sva,
     monocle,
     stats,
@@ -45,4 +46,9 @@ Imports:
 Suggests: 
     knitr,
     rmarkdown
+Remotes:
+    bioc::release/ROTS, 
+    bioc::release/sva, 
+    bioc::release/monocle, 
+    bioc::release/DESeq2
 VignetteBuilder: knitr
